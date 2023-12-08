@@ -88,6 +88,7 @@ for train_idx, valid_idx in outer_cv.split(X_train[selected_features], y_train, 
 # In[109]:
 
 
+plt.figure(figsize=(10, 8))
 fold_numbers = range(1, len(rf_f1_scores) + 1)
 plt.plot(fold_numbers, rf_f1_scores, marker='o')
 plt.xlabel('Fold Number')

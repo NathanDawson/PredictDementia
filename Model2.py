@@ -87,6 +87,7 @@ for train_idx, valid_idx in outer_cv.split(X_train[svm_selected_features], y_tra
 # In[119]:
 
 
+plt.figure(figsize=(10, 8))
 svm_fold_numbers = range(1, len(svm_f1_scores) + 1)
 plt.plot(svm_fold_numbers, svm_f1_scores, marker='o')
 plt.xlabel('Fold Number')
