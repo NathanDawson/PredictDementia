@@ -61,5 +61,5 @@ def plot_histogram(column):
     return chart
 
 
-charts = [plot_histogram(col) for col in df.columns]
-(alt.vconcat(*charts)).save('Graphs/Exploratory_Analysis/charts.html')
+data_distribution_charts = [plot_histogram(col) for col in df.columns]
+(alt.vconcat(*data_distribution_charts)).save('Graphs/Exploratory_Analysis/data_distribution_charts.html')
