@@ -63,3 +63,5 @@ def plot_histogram(column):
 
 data_distribution_charts = [plot_histogram(col) for col in df.columns]
 (alt.vconcat(*data_distribution_charts)).save('Graphs/Exploratory_Analysis/data_distribution_charts.html')
+
+df.to_csv('Data/df_after_eda.csv', index=False)

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.15.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-7eda8e8c33fb7983bcbc66805fc01117"}, "mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "Column", "type": "nominal"}, {"field": "MissingPercentage", "type": "quantitative"}], "x": {"axis": {"labelAngle": -45}, "field": "Column", "sort": null, "title": "Columns with Missing Data", "type": "nominal"}, "y": {"field": "MissingPercentage", "title": "Percentage of Missing Data", "type": "quantitative"}}, "height": 300, "title": "Percentage of Missing Data per Column", "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-7eda8e8c33fb7983bcbc66805fc01117": [{"Column": "SES", "MissingPercentage": 5.093833780160858}, {"Column": "MMSE", "MissingPercentage": 0.5361930294906166}, {"Column": "eTIV", "MissingPercentage": 0.5361930294906166}, {"Column": "ASF", "MissingPercentage": 0.5361930294906166}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
