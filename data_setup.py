@@ -6,6 +6,12 @@ import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import StratifiedGroupKFold
+from sklearn.feature_selection import RFECV
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.manifold import TSNE
 
 # Use the dataframe after Exploratory_Analysis.py has ran
 df = pd.read_csv('Data/df_after_pre-processing.csv')
@@ -24,11 +30,6 @@ y = encoder.fit_transform(y.values.reshape(-1, 1)).ravel()
 
 # Assign CDR score of Moderate to Mild
 y[y == 3] = 2
-
-# Check Moderate class (3) has been removed
-print()
-print("Ensure Moderate class has been moved into Mild class:", (y == 3).sum() == 0)
-print()
 
 # Split Data
 # In[70]:

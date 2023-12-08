@@ -3,7 +3,10 @@
 
 import pandas as pd
 import numpy as np
-import altair as alt
+import matplotlib
+matplotlib.use('TkAgg')
+import matplotlib.pyplot as plt
+
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.experimental import enable_iterative_imputer
 from sklearn.impute import IterativeImputer
@@ -128,26 +131,16 @@ missing_percent = df.isnull().sum() * 100 / len(df)
 # Filter out columns with no missing data
 missing_percent = missing_percent[missing_percent > 0]
 
-# Convert to DataFrame and reset index
-missing_percent_df = missing_percent.reset_index()
-
-# Rename the columns
-missing_percent_df.columns = ['Column', 'MissingPercentage']
-
 # Plot
-missing_data_percentages = alt.Chart(missing_percent_df).mark_bar().encode(
-    x=alt.X('Column:N', sort=None, axis=alt.Axis(labelAngle=-45), title='Columns with Missing Data'),
-    y=alt.Y('MissingPercentage:Q', title='Percentage of Missing Data'),
-    tooltip=['Column:N', 'MissingPercentage:Q']
-).properties(
-    width=600,
-    height=300,
-    title='Percentage of Missing Data per Column'
-)
+plt.figure(figsize=(12, 6))
+missing_percent.plot(kind='bar')
+plt.xlabel('Columns with Missing Data')
+plt.ylabel('Percentage of Missing Data')
+plt.title('Percentage of Missing Data per Column')
+plt.xticks(rotation=45)
 
-# Save chart
-missing_data_percentages.save('Graphs/Pre-Processing/missing_data_percentages.html')
-
+# Save figure
+plt.savefig('Graphs/Pre-Processing/Percentage_of_Missing_Data.png', bbox_inches='tight')
 
 # In[26]:
 
