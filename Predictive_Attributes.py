@@ -27,6 +27,7 @@ svm_feature_importances = final_svm.coef_[0]
 features = X_train.columns
 
 # Visualise RandomForest feature importances
+plt.figure(figsize=(10, 8))
 plt.bar(features, rf_feature_importances)
 plt.xticks(rotation=45)
 plt.title("RandomForest Feature Importances")
@@ -36,6 +37,7 @@ plt.savefig('Graphs/Predictive_Attributes/RF_Feature_Importance.png', bbox_inche
 
 
 # Visualise SVM feature importances
+plt.figure(figsize=(10, 8))
 plt.bar(features, svm_feature_importances)
 plt.xticks(rotation=45)
 plt.title("SVM Feature Importances")
@@ -49,6 +51,7 @@ plt.savefig('Graphs/Predictive_Attributes/SVM_Feature_Importance.png', bbox_inch
 
 
 # Create SHAP explainer
+plt.figure(figsize=(10, 8))
 rf_explainer = shap.TreeExplainer(final_rf)
 rf_shap_values = rf_explainer.shap_values(X_train)
 
@@ -56,7 +59,7 @@ rf_shap_values = rf_explainer.shap_values(X_train)
 shap.summary_plot(rf_shap_values, X_train, plot_type="bar")
 
 # Save the summary plot
-plt.savefig('RF_shap_summary_plot.png', bbox_inches='tight')
+plt.savefig('Graphs/Predictive_Attributes/RF_shap_summary_plot.png', bbox_inches='tight')
 
 
 df.to_csv('Data/df_after_Predictive_Attributes.csv', index=False)
