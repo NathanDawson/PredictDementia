@@ -15,8 +15,6 @@ import matplotlib.pyplot as plt
 df = pd.read_csv('Data/df_after_Model1.csv')
 
 
-# Estimated 5 Minute Run Time
-
 # Initialise Support Vector Machine
 svm = SVC(kernel='linear', random_state=42, class_weight='balanced')
 

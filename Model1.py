@@ -59,7 +59,6 @@ rf_best_params_list = []
 # In[108]:
 
 
-# Estimated 5 Minute Run Time
 X = X.reset_index(drop=True)
 
 # Outer CV loop

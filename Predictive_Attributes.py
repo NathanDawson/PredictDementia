@@ -51,15 +51,18 @@ plt.savefig('Graphs/Predictive_Attributes/SVM_Feature_Importance.png', bbox_inch
 
 
 # Create SHAP explainer
-plt.figure(figsize=(10, 8))
 rf_explainer = shap.TreeExplainer(final_rf)
 rf_shap_values = rf_explainer.shap_values(X_train)
 
-# Summarise effects of all features
+# Matplotlib Config to enable saving of SHAP Summary Plot
+plt.ioff()
+matplotlib.use('Agg')
+
 shap.summary_plot(rf_shap_values, X_train, plot_type="bar")
 
-# Save the summary plot
 plt.savefig('Graphs/Predictive_Attributes/RF_shap_summary_plot.png', bbox_inches='tight')
+
+plt.close()
 
 
 df.to_csv('Data/df_after_Predictive_Attributes.csv', index=False)
