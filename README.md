@@ -30,3 +30,17 @@ allows users to gain insights without the need to navigate through
 the codebase. Each graph is named and organised corresponding to 
 the script that generated it.
 
+
+### Additional Information
+
+#### Handling Matplotlib Errors
+
+An issue has been observed with the `matplotlib` package that may interrupt script execution. 
+Despite attempts to diagnose and address this problem, it has proven difficult due to its 
+non-reproducible nature. If any unexpected errors with `matplotlib` are encountered, it is 
+recommended to uninstall and then reinstall the package, as this has been found to resolve
+the issue:
+
+```bash
+pip uninstall matplotlib
+pip install matplotlib
