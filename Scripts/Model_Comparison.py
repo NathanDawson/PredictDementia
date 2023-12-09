@@ -15,7 +15,7 @@ import seaborn as sns
 
 
 # Use the dataframe after Model2.py has ran
-df = pd.read_csv('Data/df_after_Model2.csv')
+df = pd.read_csv('../Data/df_after_Model2.csv')
 
 
 # Assign label locations
@@ -53,7 +53,7 @@ autolabel(rf_avg_rects)
 fig.tight_layout()
 
 # Save figure
-plt.savefig('Graphs/Model_Comparison/Average_Across_Folds.png', bbox_inches='tight')
+plt.savefig('../Graphs/Model_Comparison/Average_Across_Folds.png', bbox_inches='tight')
 
 # Visualise Both Final Models Metrics
 # In[129]:
@@ -94,7 +94,7 @@ autolabel(rf_final_rects)
 fig.tight_layout()
 
 # Save figure
-plt.savefig('Graphs/Model_Comparison/Final_Models.png', bbox_inches='tight')
+plt.savefig('../Graphs/Model_Comparison/Final_Models.png', bbox_inches='tight')
 
 # Box-Plot And Swarm-Plot of Performance Metrics Across All Folds
 # In[130]:
@@ -130,6 +130,6 @@ plt.ylabel('Performance Metric')
 plt.legend(title='Model')
 
 # Save figure
-plt.savefig('Graphs/Model_Comparison/Distribution_Across_Folds.png', bbox_inches='tight')
+plt.savefig('../Graphs/Model_Comparison/Distribution_Across_Folds.png', bbox_inches='tight')
 
-df.to_csv('Data/df_after_model_comparison.csv', index=False)
+df.to_csv('../Data/df_after_model_comparison.csv', index=False)

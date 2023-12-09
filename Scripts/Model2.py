@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 
 # Use the dataframe after Exploratory_Analysis.py has ran
-df = pd.read_csv('Data/df_after_Model1.csv')
+df = pd.read_csv('../Data/df_after_Model1.csv')
 
 
 # Initialise Support Vector Machine
@@ -95,7 +95,7 @@ plt.xticks(svm_fold_numbers)
 plt.grid(True)
 
 # Save figure
-plt.savefig('Graphs/Model2/SVM_F1score_Across_Folds.png', bbox_inches='tight')
+plt.savefig('../Graphs/Model2/SVM_F1score_Across_Folds.png', bbox_inches='tight')
 
 
 #  Retrieve Best Hyperparameters From Best F1 Scoring Fold
@@ -148,7 +148,7 @@ plt.title('t-SNE Visualisation of SVM Predicted CDR Classes')
 plt.legend(title='Predicted CDR Classes')
 
 # Save figure
-plt.savefig('Graphs/Model2/SVM_Predicted_CRR_Classes.png', bbox_inches='tight')
+plt.savefig('../Graphs/Model2/SVM_Predicted_CRR_Classes.png', bbox_inches='tight')
 
 
 # Calculate Performance Metrics Using Each Fold and Final Model
@@ -212,7 +212,7 @@ autolabel(svm_rects2)
 fig.tight_layout()
 
 # Save figure
-plt.savefig('Graphs/Model2/compare_avg_folds_finalSVMModel.png', bbox_inches='tight')
+plt.savefig('../Graphs/Model2/compare_avg_folds_finalSVMModel.png', bbox_inches='tight')
 
 
-df.to_csv('Data/df_after_Model2.csv', index=False)
+df.to_csv('../Data/df_after_Model2.csv', index=False)

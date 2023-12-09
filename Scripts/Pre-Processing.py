@@ -12,7 +12,7 @@ from sklearn.experimental import enable_iterative_imputer
 from sklearn.impute import IterativeImputer
 
 # Use the dataframe after Exploratory_Analysis.py has ran
-df = pd.read_csv('Data/df_after_eda.csv')
+df = pd.read_csv('../Data/df_after_eda.csv')
 
 # Check for object type features
 objects = df.select_dtypes(include=[object])
@@ -140,7 +140,7 @@ plt.title('Percentage of Missing Data per Column')
 plt.xticks(rotation=45)
 
 # Save figure
-plt.savefig('Graphs/Pre-Processing/Percentage_of_Missing_Data.png', bbox_inches='tight')
+plt.savefig('../Graphs/Pre-Processing/Percentage_of_Missing_Data.png', bbox_inches='tight')
 
 # In[26]:
 
@@ -263,4 +263,4 @@ print((df['CDR'] == 'moderate').sum() == (df['CDR_moderate'].sum()))
 # Drop one-hot encoded CDR columns
 df.drop(['CDR_mild', 'CDR_moderate', 'CDR_none', 'CDR_very_mild'], axis=1, inplace=True)
 
-df.to_csv('Data/df_after_pre-processing.csv', index=False)
+df.to_csv('../Data/df_after_pre-processing.csv', index=False)

@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 
 # Use the dataframe after model_comparison.py has ran
-df = pd.read_csv('Data/df_after_model_comparison.csv')
+df = pd.read_csv('../Data/df_after_model_comparison.csv')
 
 
 # Obtain feature importances for each model
@@ -33,7 +33,7 @@ plt.xticks(rotation=45)
 plt.title("RandomForest Feature Importances")
 
 # Save figure
-plt.savefig('Graphs/Predictive_Attributes/RF_Feature_Importance.png', bbox_inches='tight')
+plt.savefig('../Graphs/Predictive_Attributes/RF_Feature_Importance.png', bbox_inches='tight')
 
 
 # Visualise SVM feature importances
@@ -43,7 +43,7 @@ plt.xticks(rotation=45)
 plt.title("SVM Feature Importances")
 
 # Save figure
-plt.savefig('Graphs/Predictive_Attributes/SVM_Feature_Importance.png', bbox_inches='tight')
+plt.savefig('../Graphs/Predictive_Attributes/SVM_Feature_Importance.png', bbox_inches='tight')
 
 
 # Analyse Random Forest Predictions using SHAP
@@ -60,9 +60,9 @@ matplotlib.use('Agg')
 
 shap.summary_plot(rf_shap_values, X_train, plot_type="bar")
 
-plt.savefig('Graphs/Predictive_Attributes/RF_shap_summary_plot.png', bbox_inches='tight')
+plt.savefig('../Graphs/Predictive_Attributes/RF_shap_summary_plot.png', bbox_inches='tight')
 
 plt.close()
 
 
-df.to_csv('Data/df_after_Predictive_Attributes.csv', index=False)
+df.to_csv('../Data/df_after_Predictive_Attributes.csv', index=False)

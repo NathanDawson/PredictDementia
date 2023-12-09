@@ -11,10 +11,11 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.cluster import OPTICS
 from sklearn.manifold import TSNE
 
 # Use the dataframe after Exploratory_Analysis.py has ran
-df = pd.read_csv('Data/df_after_pre-processing.csv')
+df = pd.read_csv('../Data/df_after_pre-processing.csv')
 
 # Create X and y variables
 X = df.drop(['CDR', 'MRI_ID'], axis=1)
@@ -54,4 +55,4 @@ outer_cv = StratifiedGroupKFold(n_splits=10)
 # Inner CV for model selection (feature selection and hyperparameter tuning)
 inner_cv = StratifiedGroupKFold(n_splits=10)
 
-df.to_csv('Data/df_after_data_setup.csv', index=False)
+df.to_csv('../Data/df_after_data_setup.csv', index=False)

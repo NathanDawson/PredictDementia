@@ -7,11 +7,11 @@ import altair as alt
 # In[2]:
 
 
-data1 = pd.read_csv("Data/visit-1.csv")
-data2 = pd.read_csv("Data/visit-2.csv")
-data3 = pd.read_csv("Data/visit-3.csv")
-data4 = pd.read_csv("Data/visit-4.csv")
-data5 = pd.read_csv("Data/visit-5.csv")
+data1 = pd.read_csv("../Data/visit-1.csv")
+data2 = pd.read_csv("../Data/visit-2.csv")
+data3 = pd.read_csv("../Data/visit-3.csv")
+data4 = pd.read_csv("../Data/visit-4.csv")
+data5 = pd.read_csv("../Data/visit-5.csv")
 
 # In[3]:
 
@@ -62,6 +62,6 @@ def plot_histogram(column):
 
 
 data_distribution_charts = [plot_histogram(col) for col in df.columns]
-(alt.vconcat(*data_distribution_charts)).save('Graphs/Exploratory_Analysis/data_distribution_charts.html')
+(alt.vconcat(*data_distribution_charts)).save('../Graphs/Exploratory_Analysis/data_distribution_charts.html')
 
-df.to_csv('Data/df_after_eda.csv', index=False)
+df.to_csv('../Data/df_after_eda.csv', index=False)
