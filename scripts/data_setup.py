@@ -15,7 +15,7 @@ from sklearn.cluster import OPTICS
 from sklearn.manifold import TSNE
 
 # Use the dataframe after Exploratory_Analysis.py has ran
-df = pd.read_csv('../Data/df_after_pre-processing.csv')
+df = pd.read_csv('data/df_after_pre-processing.csv')
 
 # Create X and y variables
 X = df.drop(['CDR', 'MRI_ID'], axis=1)
@@ -32,7 +32,7 @@ y = encoder.fit_transform(y.values.reshape(-1, 1)).ravel()
 # Assign CDR score of Moderate to Mild
 y[y == 3] = 2
 
-# Split Data
+# Split data
 # In[70]:
 
 
@@ -54,5 +54,3 @@ outer_cv = StratifiedGroupKFold(n_splits=10)
 
 # Inner CV for model selection (feature selection and hyperparameter tuning)
 inner_cv = StratifiedGroupKFold(n_splits=10)
-
-df.to_csv('../Data/df_after_data_setup.csv', index=False)

@@ -12,7 +12,7 @@ from sklearn.experimental import enable_iterative_imputer
 from sklearn.impute import IterativeImputer
 
 # Use the dataframe after Exploratory_Analysis.py has ran
-df = pd.read_csv('../Data/df_after_eda.csv')
+df = pd.read_csv('data/df_after_eda.csv')
 
 # Check for object type features
 objects = df.select_dtypes(include=[object])
@@ -108,13 +108,13 @@ df = df.reset_index(drop=True)
 encoded_df = encoded_df.reset_index(drop=True)
 df = pd.concat([df, encoded_df], axis=1)
 
-#  Check for Duplicated Data
+#  Check for Duplicated data
 # In[23]:
 
 print()
-print("Check for Duplicated Data:", df.duplicated().sum())
+print("Check for Duplicated data:", df.duplicated().sum())
 print()
-# Analyse Missing Data
+# Analyse Missing data
 # In[24]:
 
 
@@ -134,13 +134,13 @@ missing_percent = missing_percent[missing_percent > 0]
 # Plot
 plt.figure(figsize=(12, 6))
 missing_percent.plot(kind='bar')
-plt.xlabel('Columns with Missing Data')
-plt.ylabel('Percentage of Missing Data')
-plt.title('Percentage of Missing Data per Column')
+plt.xlabel('Columns with Missing data')
+plt.ylabel('Percentage of Missing data')
+plt.title('Percentage of Missing data per Column')
 plt.xticks(rotation=45)
 
 # Save figure
-plt.savefig('../Graphs/Pre-Processing/Percentage_of_Missing_Data.png', bbox_inches='tight')
+plt.savefig('results/Pre-Processing/Percentage_of_Missing_Data.png', bbox_inches='tight')
 
 # In[26]:
 
@@ -263,4 +263,4 @@ print((df['CDR'] == 'moderate').sum() == (df['CDR_moderate'].sum()))
 # Drop one-hot encoded CDR columns
 df.drop(['CDR_mild', 'CDR_moderate', 'CDR_none', 'CDR_very_mild'], axis=1, inplace=True)
 
-df.to_csv('../Data/df_after_pre-processing.csv', index=False)
+df.to_csv('data/df_after_pre-processing.csv', index=False)

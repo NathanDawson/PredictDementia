@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 # In[105]:
 
 # Use the dataframe after Exploratory_Analysis.py has ran
-df = pd.read_csv('../Data/df_after_data_setup.csv')
+df = pd.read_csv('data/df_after_pre-processing.csv')
 
 # Initialise RandomForestClassifier
 rf = RandomForestClassifier(random_state=42, class_weight='balanced')
@@ -97,7 +97,7 @@ plt.xticks(fold_numbers)
 plt.grid(True)
 
 # Save figure
-plt.savefig('../Graphs/Model1/RF_F1score_Across_Folds.png', bbox_inches='tight')
+plt.savefig('results/Model1/RF_F1score_Across_Folds.png', bbox_inches='tight')
 
 # Retrieve Best Hyperparameters From Best F1 Scoring Fold
 # In[110]:
@@ -149,7 +149,7 @@ plt.title('t-SNE Visualisation of RF Predicted CDR Classes')
 plt.legend(title='Predicted CDR Classes')
 
 # Save figure
-plt.savefig('../Graphs/Model1/RF_Predicted_CRR_Classes.png', bbox_inches='tight')
+plt.savefig('results/Model1/RF_Predicted_CRR_Classes.png', bbox_inches='tight')
 
 # Calculate Performance Metrics Using Each Fold and Final Model
 # In[113]:
@@ -212,7 +212,4 @@ autolabel(rects2)
 fig.tight_layout()
 
 # Save figure
-plt.savefig('../Graphs/Model1/compare_avg_folds_finalModel.png', bbox_inches='tight')
-
-
-df.to_csv('../Data/df_after_Model1.csv', index=False)
+plt.savefig('results/Model1/compare_avg_folds_finalModel.png', bbox_inches='tight')
