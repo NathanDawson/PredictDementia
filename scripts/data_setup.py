@@ -14,7 +14,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 from sklearn.cluster import OPTICS
 from sklearn.manifold import TSNE
 
-# Use the dataframe after Exploratory_Analysis.py has ran
+# Use the pre-processed dataframe
 df = pd.read_csv('data/df_after_pre-processing.csv')
 
 # Create X and y variables
@@ -52,5 +52,5 @@ groups_train = groups_train.reset_index(drop=True)
 # Outer CV for model evaluation
 outer_cv = StratifiedGroupKFold(n_splits=10)
 
-# Inner CV for model selection (feature selection and hyperparameter tuning)
+# Inner CV for model selection (hyperparameter tuning)
 inner_cv = StratifiedGroupKFold(n_splits=10)

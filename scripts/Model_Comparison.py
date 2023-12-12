@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-# Use the dataframe after Model2.py has ran
+# Use the pre-processed dataframe
 df = pd.read_csv('data/df_after_pre-processing.csv')
 
 

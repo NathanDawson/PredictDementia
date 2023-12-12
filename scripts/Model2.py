@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 # In[115]:
 
 
-# Use the dataframe after Exploratory_Analysis.py has ran
+# Use the pre-processed dataframe
 df = pd.read_csv('data/df_after_pre-processing.csv')
 
 
@@ -109,7 +109,7 @@ svm_best_fold_index = svm_f1_scores.index(max(svm_f1_scores))
 svm_best_hyperparameters = svm_best_params_list[svm_best_fold_index]
 
 # Removing the 'classifier__' prefix
-svm_best_hyperparameters = {k.replace('classifier__', ''): v for k, v in svm_best_hyperparameters.items()}
+svm_best_hyperparameters = {j.replace('classifier__', ''): i for j, i in svm_best_hyperparameters.items()}
 
 # Train Final Model Using Best Hyperparameters Found
 # In[121]:
@@ -117,10 +117,10 @@ svm_best_hyperparameters = {k.replace('classifier__', ''): v for k, v in svm_bes
 
 # Train final model using best hyperparameters
 final_svm = SVC(**svm_best_hyperparameters, random_state=42, class_weight='balanced')
-final_svm.fit(X_train, y_train)
+final_svm.fit(X_train[svm_selected_features], y_train)
 
 # Evaluate final model on test set
-svm_y_pred = final_svm.predict(X_test)
+svm_y_pred = final_svm.predict(X_test[svm_selected_features])
 
 # Perform Dimensionality Reduction and Visualise Clustering
 # In[122]:
@@ -128,7 +128,7 @@ svm_y_pred = final_svm.predict(X_test)
 
 # Perform t-SNE for dimensionality reduction to 2 components for visualisation
 tsne = TSNE(n_components=2, random_state=42)
-svm_X_test_tsne = tsne.fit_transform(X_test)
+svm_X_test_tsne = tsne.fit_transform(X_test[svm_selected_features])
 
 # Define color map for classes
 colors = ['blue', 'green', 'red']

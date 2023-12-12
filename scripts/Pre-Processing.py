@@ -219,7 +219,7 @@ print()
 # In[35]:
 
 
-# Update ASF value
+# Update ASF value of singular outlier greater than 2 (ASF value 103)
 df.loc[df['MRI_ID'] == '0185_MR1', 'ASF'] = 1.03
 
 # Verify change

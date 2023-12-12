@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 # Initialise Model and Perform Feature Selection
 # In[105]:
 
-# Use the dataframe after Exploratory_Analysis.py has ran
+# Use the pre-processed dataframe
 df = pd.read_csv('data/df_after_pre-processing.csv')
 
 # Initialise RandomForestClassifier
@@ -110,7 +110,7 @@ best_fold_index = rf_f1_scores.index(max(rf_f1_scores))
 best_hyperparameters = rf_best_params_list[best_fold_index]
 
 # Removing the 'classifier__' prefix
-best_hyperparameters = {k.replace('classifier__', ''): v for k, v in best_hyperparameters.items()}
+best_hyperparameters = {j.replace('classifier__', ''): i for j, i in best_hyperparameters.items()}
 
 # Train Final Model Using Best Hyperparameters Found
 # In[111]:
@@ -118,10 +118,10 @@ best_hyperparameters = {k.replace('classifier__', ''): v for k, v in best_hyperp
 
 # Train the final model using the best hyperparameters
 final_rf = RandomForestClassifier(**best_hyperparameters, random_state=42, class_weight='balanced')
-final_rf.fit(X_train, y_train)
+final_rf.fit(X_train[selected_features], y_train)
 
 # Predict on test set using final model
-y_pred = final_rf.predict(X_test)
+y_pred = final_rf.predict(X_test[selected_features])
 
 # Perform Dimensionality Reduction and Visualise Clustering
 # In[112]:
@@ -129,7 +129,7 @@ y_pred = final_rf.predict(X_test)
 
 # Perform t-SNE for dimensionality reduction to 2 components for visualisation
 tsne = TSNE(n_components=2, random_state=42)
-X_test_tsne = tsne.fit_transform(X_test)
+X_test_tsne = tsne.fit_transform(X_test[selected_features])
 
 # Define color map for classes
 colors = ['blue', 'green', 'red']
