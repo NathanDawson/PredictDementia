@@ -11,10 +11,6 @@ matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
 
-# Use the pre-processed dataframe
-df = pd.read_csv('data/df_after_pre-processing.csv')
-
-
 # Obtain feature importances for each model
 rf_feature_importances = final_rf.feature_importances_
 svm_feature_importances = final_svm.coef_[0]
@@ -23,21 +19,24 @@ svm_feature_importances = final_svm.coef_[0]
 # In[133]:
 
 
-# Obtain feature names
-features = X_train.columns
+# Obtain Random Forest feature names
+rf_features = X_train[selected_features].columns
 
 # Visualise RandomForest feature importances
 plt.figure(figsize=(10, 8))
-plt.bar(features, rf_feature_importances)
+plt.bar(rf_features, rf_feature_importances)
 plt.xticks(rotation=45)
 plt.title("RandomForest Feature Importances")
 
 # Save figure
 plt.savefig('results/Predictive_Attributes/RF_Feature_Importance.png', bbox_inches='tight')
 
+# Obtain Support Vector Machine feature names
+svm_features = X_train[svm_selected_features].columns
+
 # Visualise SVM feature importances
 plt.figure(figsize=(10, 8))
-plt.bar(features, svm_feature_importances)
+plt.bar(svm_features, svm_feature_importances)
 plt.xticks(rotation=45)
 plt.title("SVM Feature Importances")
 
@@ -51,13 +50,13 @@ plt.savefig('results/Predictive_Attributes/SVM_Feature_Importance.png', bbox_inc
 
 # Create SHAP explainer
 rf_explainer = shap.TreeExplainer(final_rf)
-rf_shap_values = rf_explainer.shap_values(X_train)
+rf_shap_values = rf_explainer.shap_values(X_train[selected_features])
 
 # Matplotlib Config to enable saving of SHAP Summary Plot
 plt.ioff()
 matplotlib.use('Agg')
 
-shap.summary_plot(rf_shap_values, X_train, plot_type="bar")
+shap.summary_plot(rf_shap_values, X_train[selected_features], plot_type="bar")
 
 plt.savefig('results/Predictive_Attributes/RF_shap_summary_plot.png', bbox_inches='tight')
 
