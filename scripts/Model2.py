@@ -184,7 +184,7 @@ width = 0.35
 
 # Provide data
 fig, ax = plt.subplots()
-svm_rects1 = ax.bar(x - width / 2, svm_avg_values, width, label='Average Across Folds')
+svm_rects1 = ax.bar(x - width / 2, svm_avg_values, width, label='Avg Across Folds')
 svm_rects2 = ax.bar(x + width / 2, svm_final_values, width, label='Model')
 
 # Add text to visualisation
