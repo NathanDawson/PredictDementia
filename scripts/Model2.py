@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 # In[115]:
 
 
-# Use the pre-processed dataframe
+# Access the pre-processed dataframe
 df = pd.read_csv('data/df_after_pre-processing.csv')
 
 
@@ -25,6 +25,7 @@ svm_rfecv.fit(X_train, y_train, groups=groups_train)
 # Identify selected features
 svm_selected_features = X_train.columns[svm_rfecv.support_]
 
+
 # Setup GridSearchCV With Pipeline And Hyperparameter Grid
 # In[116]:
 
@@ -34,11 +35,13 @@ svm_params = {'classifier__C': [1, 10, 100, ],
               'classifier__gamma': [1, 0.1, 0.01],
               'classifier__kernel': ['linear']}
 
+
 # Setup pipeline
 svm_pipeline = Pipeline([
     ('scaler', StandardScaler()),
     ('classifier', svm)
 ])
+
 
 # Setup GridSearchCV with the pipeline and hyperparameter grid
 # n_jobs=8, assumes 8 processors available

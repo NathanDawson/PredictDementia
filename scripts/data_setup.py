@@ -14,7 +14,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 from sklearn.cluster import OPTICS
 from sklearn.manifold import TSNE
 
-# Use the pre-processed dataframe
+# Access the pre-processed dataframe
 df = pd.read_csv('data/df_after_pre-processing.csv')
 
 # Create X and y variables

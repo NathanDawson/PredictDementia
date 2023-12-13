@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 # Initialise Model and Perform Feature Selection
 # In[105]:
 
-# Use the pre-processed dataframe
+# Access the pre-processed dataframe
 df = pd.read_csv('data/df_after_pre-processing.csv')
 
 # Initialise RandomForestClassifier

@@ -11,7 +11,7 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.experimental import enable_iterative_imputer
 from sklearn.impute import IterativeImputer
 
-# Use the dataframe after Exploratory_Analysis.py has ran
+# Access dataframe state after Exploratory_Analysis.py has ran
 df = pd.read_csv('data/df_after_eda.csv')
 
 # Check for object type features
@@ -28,7 +28,7 @@ converted_column = pd.to_numeric(df['ASF'], errors='coerce')
 
 # Check for rows which could not be converted
 print()
-print("Check for rows which could not be converted:", df['ASF'][converted_column.isna() & df['ASF'].notna()])
+print("Rows which could not be converted to numeric:", df['ASF'][converted_column.isna() & df['ASF'].notna()])
 print()
 # In[12]:
 
@@ -263,4 +263,5 @@ print((df['CDR'] == 'moderate').sum() == (df['CDR_moderate'].sum()))
 # Drop one-hot encoded CDR columns
 df.drop(['CDR_mild', 'CDR_moderate', 'CDR_none', 'CDR_very_mild'], axis=1, inplace=True)
 
+# Save Dataframe in its current state, after pre-processing has occurred
 df.to_csv('data/df_after_pre-processing.csv', index=False)
